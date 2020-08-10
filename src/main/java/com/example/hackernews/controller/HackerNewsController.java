@@ -19,7 +19,14 @@ public class HackerNewsController {
         return stories;
     }
 
-    @GetMapping("/")
-    @GetMapping("/")
-    public List<Comment> get
+    @GetMapping("/past-stories")
+    public List<Stroy> getPastStroies(){
+        List<Stroy> stories=new ArrayList<>();
+        return stories;
+    }
+    @GetMapping("/comments")
+    public List<Comment> getCommants(){
+        List<Comment> comments=new ArrayList<>();
+        return comments;
+    }
 }
