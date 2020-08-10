@@ -2,9 +2,13 @@ package com.example.hackernews.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -20,8 +24,9 @@ public class UsersDTO implements Serializable {
     private int karma;
     @Column(name="cretaed")
     private long cretaed;
-    @Column(name="submitted")
-    private ItemsDTO submitted;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private List<ItemsDTO> submitted;
 
     public String getId() {
         return id;
@@ -63,11 +68,11 @@ public class UsersDTO implements Serializable {
         this.cretaed = cretaed;
     }
 
-    public ItemsDTO getSubmitted() {
+    public List<ItemsDTO> getSubmitted() {
         return submitted;
     }
 
-    public void setSubmitted(ItemsDTO submitted) {
+    public void setSubmitted(List<ItemsDTO> submitted) {
         this.submitted = submitted;
     }
 }

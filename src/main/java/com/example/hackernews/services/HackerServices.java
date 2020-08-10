@@ -12,14 +12,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class HackerServices implements HackersDao {
+//public class HackerServices implements HackersDao {
+@Service
+public class HackerServices  {
 
     @Autowired
     ItemsRepository itemsRepository;
 
     public List<Stroy> getStories() throws HackerException {
         List<Stroy> stroyList = new ArrayList<>();
-        List<ItemsDTO> itemsDTOS = itemsRepository.getStoryList();
+        String type="story";
+        List<ItemsDTO> itemsDTOS=new ArrayList<>();
+        try {
+           itemsDTOS = itemsRepository.getStoryList(type);
+        }catch (Exception ex){
+           // throw Exception(ex);
+            ex.printStackTrace();
+        }
         if (itemsDTOS != null) {
             for (ItemsDTO dto : itemsDTOS) {
                 Stroy stroy = new Stroy();
@@ -40,7 +49,12 @@ public class HackerServices implements HackersDao {
 
     public List<Comment> getCommant() throws HackerException {
         List<Comment> commentList = new ArrayList<>();
-        List<ItemsDTO> items = itemsRepository.getCommandsList();
+        List<ItemsDTO> items=new ArrayList<>();
+        try {
+            items = itemsRepository.getCommandsList();
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
         if (items != null) {
             for (ItemsDTO dto : items) {
                 Comment comment = new Comment();

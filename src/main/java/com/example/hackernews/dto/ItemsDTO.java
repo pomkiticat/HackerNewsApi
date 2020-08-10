@@ -2,38 +2,44 @@ package com.example.hackernews.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
+import java.util.Set;
+
 @Entity
 @Table(name = "items")
 public class ItemsDTO implements Serializable {
     @Id
     private int id;
-    @Column(name="deleted")
+    @Column(name = "deleted")
     private Boolean deleted;
-    @Column(name="dead")
+    @Column(name = "dead")
     private Boolean dead;
-    @Column(name="type")
+    @Column(name = "type")
     private String type;
-    @Column(name="by")
+    @Column(name = "by")
     private UsersDTO by;
-    @Column(name="text")
+    @Column(name = "text")
     private String text;
-    @Column(name="url")
+    @Column(name = "url")
     private String url;
-    @Column(name="time")
+    @Column(name = "time")
     private long time;
-    @Column(name="title")
+    @Column(name = "title")
     private String title;
-    @Column(name="score")
+    @Column(name = "score")
     private int score;
-   // @Column(name="kids")
-    private ItemsDTO kids;
-//    parent
-//    poll
+    // @Column(name="kids")
+    private Set<ItemsDTO> kids;
+    private ItemsDTO parent;
+    //    poll
 //            parts
-//                    descendants
+    private int descendants;
 
 
     public int getId() {
@@ -72,6 +78,8 @@ public class ItemsDTO implements Serializable {
         return by;
     }
 
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "by", referencedColumnName = "id")
     public void setBy(UsersDTO by) {
         this.by = by;
     }
@@ -116,11 +124,27 @@ public class ItemsDTO implements Serializable {
         this.score = score;
     }
 
-    public ItemsDTO getKids() {
+    public Set<ItemsDTO> getKids() {
         return kids;
     }
 
-    public void setKids(ItemsDTO kids) {
+    public void setKids(Set<ItemsDTO> kids) {
         this.kids = kids;
+    }
+
+    public ItemsDTO getParent() {
+        return parent;
+    }
+
+    public void setParent(ItemsDTO parent) {
+        this.parent = parent;
+    }
+
+    public int getDescendants() {
+        return descendants;
+    }
+
+    public void setDescendants(int descendants) {
+        this.descendants = descendants;
     }
 }

@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+//@Service
 public interface HackersDao {
 
-    public List<Stroy> getStories() throws HackerException;
-    public List<Comment> getCommant() throws HackerException;
+//    public List<Stroy> getStories() throws HackerException;
+//    public List<Comment> getCommant() throws HackerException;
 }

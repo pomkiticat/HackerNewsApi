@@ -18,7 +18,7 @@ import java.util.List;
 public class HackerNewsController {
 
     @Autowired
-    public HackersDao services;
+    public HackerServices services;
 
     @GetMapping("/best-stories")
     public List<Stroy> getBestStroies() throws HackerException {

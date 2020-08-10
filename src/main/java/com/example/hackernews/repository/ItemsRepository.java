@@ -12,17 +12,18 @@ import java.util.List;
 public class ItemsRepository {
     Session session=null;
 
-    public List<ItemsDTO> getStoryList(){
-        String sql = null;
+    public List<ItemsDTO> getStoryList(String type) throws Exception{
+        String sql ="SELECT b from ItemsDTO b where b.type=:type order by b.score" ;
 
         Query query = session.createQuery(sql);
+        query.setParameter("type",type);
         query.setFirstResult(1);
         query.setMaxResults(10);
         List<ItemsDTO> result =(List<ItemsDTO>) query.getResultList();
         return result;
     }
 
-    public List<ItemsDTO> getCommandsList(){
+    public List<ItemsDTO> getCommandsList() throws Exception{
         String sql="";
         Query query = session.createQuery(sql);
         List<ItemsDTO> result =(List<ItemsDTO>) query.getResultList();
