@@ -1,4 +1,4 @@
-package com.example.hackernews.Entity;
+package com.example.hackernews.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 @Entity
 @Table(name = "items")
-public class Items implements Serializable {
+public class ItemsDTO implements Serializable {
     @Id
     private int id;
     @Column(name="deleted")
@@ -17,7 +17,7 @@ public class Items implements Serializable {
     @Column(name="type")
     private String type;
     @Column(name="by")
-    private Users by;
+    private UsersDTO by;
     @Column(name="text")
     private String text;
     @Column(name="url")
@@ -29,7 +29,7 @@ public class Items implements Serializable {
     @Column(name="score")
     private int score;
 //    @Column(name="first_name")
-//    private Items kids;
+//    private ItemsDTO kids;
 //    parent
 //    poll
 //            parts
@@ -68,11 +68,11 @@ public class Items implements Serializable {
         this.type = type;
     }
 
-    public Users getBy() {
+    public UsersDTO getBy() {
         return by;
     }
 
-    public void setBy(Users by) {
+    public void setBy(UsersDTO by) {
         this.by = by;
     }
 
@@ -116,11 +116,11 @@ public class Items implements Serializable {
         this.score = score;
     }
 
-//    public Items getKids() {
+//    public ItemsDTO getKids() {
 //        return kids;
 //    }
 //
-//    public void setKids(Items kids) {
+//    public void setKids(ItemsDTO kids) {
 //        this.kids = kids;
 //    }
 }

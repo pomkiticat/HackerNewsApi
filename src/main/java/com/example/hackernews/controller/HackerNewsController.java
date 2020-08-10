@@ -35,7 +35,7 @@ public class HackerNewsController {
     @GetMapping("/comments")
     public List<Comment> getCommants()throws HackerException{
         List<Comment> comments=services.getCommant();
-        System.out.println("commants-stories");
+
         return comments;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.hackernews.Entity;
+package com.example.hackernews.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class Users implements Serializable {
+public class UsersDTO implements Serializable {
     @Id
 
     private String id;
@@ -21,7 +21,7 @@ public class Users implements Serializable {
     @Column(name="cretaed")
     private long cretaed;
     @Column(name="submitted")
-    private Items submitted;
+    private ItemsDTO submitted;
 
     public String getId() {
         return id;
@@ -63,11 +63,11 @@ public class Users implements Serializable {
         this.cretaed = cretaed;
     }
 
-    public Items getSubmitted() {
+    public ItemsDTO getSubmitted() {
         return submitted;
     }
 
-    public void setSubmitted(Items submitted) {
+    public void setSubmitted(ItemsDTO submitted) {
         this.submitted = submitted;
     }
 }
