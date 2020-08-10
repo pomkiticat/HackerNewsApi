@@ -20,32 +20,39 @@ public class HackerServices implements HackersDao {
     public List<Stroy> getStories() throws HackerException {
         List<Stroy> stroyList = new ArrayList<>();
         List<ItemsDTO> itemsDTOS = itemsRepository.getStoryList();
-        for (ItemsDTO dto : itemsDTOS) {
-            Stroy stroy = new Stroy();
-            stroy.setId(dto.getId());
-            stroy.setBy(dto.getBy().getId());
-            // stroy.setDescendants(dto.getd);
-            stroy.setScore(dto.getScore());
-            stroy.setTitle(dto.getTitle());
-            stroy.setTime(dto.getTime());
-            stroy.setType(dto.getType());
-            stroy.setUrl(dto.getUrl());
+        if (itemsDTOS != null) {
+            for (ItemsDTO dto : itemsDTOS) {
+                Stroy stroy = new Stroy();
+                stroy.setId(dto.getId());
+                stroy.setBy(dto.getBy().getId());
+                // stroy.setDescendants(dto.getd);
+                stroy.setScore(dto.getScore());
+                stroy.setTitle(dto.getTitle());
+                stroy.setTime(dto.getTime());
+                stroy.setType(dto.getType());
+                stroy.setUrl(dto.getUrl());
+            }
+        } else {
+            throw new HackerException("No data found for story");
         }
         return stroyList;
     }
 
-    public List<Comment> getCommant() throws HackerException{
+    public List<Comment> getCommant() throws HackerException {
         List<Comment> commentList = new ArrayList<>();
-        List<ItemsDTO> items=itemsRepository.getCommandsList();
-
-        for(ItemsDTO dto:items){
-            Comment comment=new Comment();
-        //    int kids[]=dto.getKids()
-            comment.setId(dto.getId());
-            comment.setText(dto.getText());
-            comment.setTime(dto.getTime());
-            comment.setBy(dto.getBy().getId());
-            comment.setType(dto.getType());
+        List<ItemsDTO> items = itemsRepository.getCommandsList();
+        if (items != null) {
+            for (ItemsDTO dto : items) {
+                Comment comment = new Comment();
+                //    int kids[]=dto.getKids()
+                comment.setId(dto.getId());
+                comment.setText(dto.getText());
+                comment.setTime(dto.getTime());
+                comment.setBy(dto.getBy().getId());
+                comment.setType(dto.getType());
+            }
+        } else {
+            throw new HackerException("No data fond for commants");
         }
         return commentList;
     }
