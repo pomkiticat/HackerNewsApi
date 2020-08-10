@@ -4,6 +4,7 @@ import com.example.hackernews.exception.HackerException;
 import com.example.hackernews.model.Comment;
 import com.example.hackernews.model.Stroy;
 import com.example.hackernews.services.HackerServices;
+import com.example.hackernews.services.HackersDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import java.util.List;
 public class HackerNewsController {
 
     @Autowired
-    public HackerServices services;
+    public HackersDao services;
 
     @GetMapping("/best-stories")
     public List<Stroy> getBestStroies() throws HackerException {

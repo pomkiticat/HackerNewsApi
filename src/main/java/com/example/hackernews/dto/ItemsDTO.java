@@ -28,8 +28,8 @@ public class ItemsDTO implements Serializable {
     private String title;
     @Column(name="score")
     private int score;
-//    @Column(name="first_name")
-//    private ItemsDTO kids;
+   // @Column(name="kids")
+    private ItemsDTO kids;
 //    parent
 //    poll
 //            parts
@@ -116,11 +116,11 @@ public class ItemsDTO implements Serializable {
         this.score = score;
     }
 
-//    public ItemsDTO getKids() {
-//        return kids;
-//    }
-//
-//    public void setKids(ItemsDTO kids) {
-//        this.kids = kids;
-//    }
+    public ItemsDTO getKids() {
+        return kids;
+    }
+
+    public void setKids(ItemsDTO kids) {
+        this.kids = kids;
+    }
 }
