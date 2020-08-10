@@ -1,19 +1,35 @@
 package com.example.hackernews.Entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
-
+@Entity
+@Table(name = "items")
 public class Items implements Serializable {
+    @Id
     private int id;
+    @Column(name="deleted")
     private Boolean deleted;
+    @Column(name="dead")
     private Boolean dead;
+    @Column(name="type")
     private String type;
+    @Column(name="by")
     private Users by;
+    @Column(name="text")
     private String text;
+    @Column(name="url")
     private String url;
+    @Column(name="time")
     private long time;
+    @Column(name="title")
     private String title;
+    @Column(name="score")
     private int score;
-    private Items kids;
+//    @Column(name="first_name")
+//    private Items kids;
 //    parent
 //    poll
 //            parts
@@ -100,11 +116,11 @@ public class Items implements Serializable {
         this.score = score;
     }
 
-    public Items getKids() {
-        return kids;
-    }
-
-    public void setKids(Items kids) {
-        this.kids = kids;
-    }
+//    public Items getKids() {
+//        return kids;
+//    }
+//
+//    public void setKids(Items kids) {
+//        this.kids = kids;
+//    }
 }

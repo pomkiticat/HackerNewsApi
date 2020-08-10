@@ -1,5 +1,6 @@
 package com.example.hackernews.controller;
 
+import com.example.hackernews.exception.HackerException;
 import com.example.hackernews.model.Comment;
 import com.example.hackernews.model.Stroy;
 import com.example.hackernews.services.HackerServices;
@@ -19,19 +20,22 @@ public class HackerNewsController {
     public HackerServices services;
 
     @GetMapping("/best-stories")
-    public List<Stroy> getBestStroies(){
+    public List<Stroy> getBestStroies() throws HackerException {
         List<Stroy> stories=services.getStories();
+        System.out.println("best-stories");
         return stories;
     }
 
     @GetMapping("/past-stories")
-    public List<Stroy> getPastStroies(){
+    public List<Stroy> getPastStroies()throws HackerException{
         List<Stroy> stories=new ArrayList<>();
+        System.out.println("past-stories");
         return stories;
     }
     @GetMapping("/comments")
-    public List<Comment> getCommants(){
+    public List<Comment> getCommants()throws HackerException{
         List<Comment> comments=services.getCommant();
+        System.out.println("commants-stories");
         return comments;
     }
 }
