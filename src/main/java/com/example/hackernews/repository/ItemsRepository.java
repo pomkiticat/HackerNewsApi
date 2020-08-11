@@ -23,8 +23,8 @@ public class ItemsRepository {
         return result;
     }
 
-    public List<ItemsDTO> getCommandsList() throws Exception{
-        String sql="";
+    public List<ItemsDTO> getCommandsList(int id,String type) throws Exception{
+        String sql="SELECT b from ItemsDTO b where b.type=:type and b.parent=:id ";
         Query query = session.createQuery(sql);
         List<ItemsDTO> result =(List<ItemsDTO>) query.getResultList();
         return result;

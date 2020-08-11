@@ -15,19 +15,21 @@ import java.util.List;
 //public class HackerServices implements HackersDao {
 @Service
 public class HackerServices  {
+    static final String story="story";
+    static final String comment="comment";
 
     @Autowired
     ItemsRepository itemsRepository;
 
     public List<Story> getStories() throws HackerException {
         List<Story> stroyList = new ArrayList<>();
-        String type="story";
+
         List<ItemsDTO> itemsDTOS=new ArrayList<>();
         try {
-           itemsDTOS = itemsRepository.getStoryList(type);
+           itemsDTOS = itemsRepository.getStoryList(story);
         }catch (Exception ex){
-           // throw Exception(ex);
-            ex.printStackTrace();
+          throw new HackerException(ex);
+           // ex.printStackTrace();
         }
         if (itemsDTOS != null) {
             for (ItemsDTO dto : itemsDTOS) {
@@ -47,11 +49,11 @@ public class HackerServices  {
         return stroyList;
     }
 
-    public List<Comment> getCommant() throws HackerException {
+    public List<Comment> getCommant(int id) throws HackerException {
         List<Comment> commentList = new ArrayList<>();
         List<ItemsDTO> items=new ArrayList<>();
         try {
-            items = itemsRepository.getCommandsList();
+            items = itemsRepository.getCommandsList(id,comment);
         }catch(Exception ex){
             ex.printStackTrace();
         }
