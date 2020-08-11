@@ -3,7 +3,7 @@ package com.example.hackernews.services;
 import com.example.hackernews.dto.ItemsDTO;
 import com.example.hackernews.exception.HackerException;
 import com.example.hackernews.model.Comment;
-import com.example.hackernews.model.Stroy;
+import com.example.hackernews.model.Story;
 import com.example.hackernews.repository.ItemsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,8 +19,8 @@ public class HackerServices  {
     @Autowired
     ItemsRepository itemsRepository;
 
-    public List<Stroy> getStories() throws HackerException {
-        List<Stroy> stroyList = new ArrayList<>();
+    public List<Story> getStories() throws HackerException {
+        List<Story> stroyList = new ArrayList<>();
         String type="story";
         List<ItemsDTO> itemsDTOS=new ArrayList<>();
         try {
@@ -31,7 +31,7 @@ public class HackerServices  {
         }
         if (itemsDTOS != null) {
             for (ItemsDTO dto : itemsDTOS) {
-                Stroy stroy = new Stroy();
+                Story stroy = new Story();
                 stroy.setId(dto.getId());
                 stroy.setBy(dto.getBy().getId());
                 // stroy.setDescendants(dto.getd);

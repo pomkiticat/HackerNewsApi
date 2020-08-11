@@ -147,4 +147,24 @@ public class ItemsDTO implements Serializable {
     public void setDescendants(int descendants) {
         this.descendants = descendants;
     }
+
+    public ItemsDTO(int id, Boolean deleted, Boolean dead, String type, UsersDTO by, String text, String url, long time, String title, int score, Set<ItemsDTO> kids, ItemsDTO parent, int descendants) {
+        this.id = id;
+        this.deleted = deleted;
+        this.dead = dead;
+        this.type = type;
+        this.by = by;
+        this.text = text;
+        this.url = url;
+        this.time = time;
+        this.title = title;
+        this.score = score;
+        this.kids = kids;
+        this.parent = parent;
+        this.descendants = descendants;
+    }
+
+    public ItemsDTO() {
+    }
+
 }

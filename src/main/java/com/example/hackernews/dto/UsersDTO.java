@@ -75,4 +75,15 @@ public class UsersDTO implements Serializable {
     public void setSubmitted(List<ItemsDTO> submitted) {
         this.submitted = submitted;
     }
+
+    public UsersDTO(String id, String about, int delay, int karma, long cretaed, List<ItemsDTO> submitted) {
+        this.id = id;
+        this.about = about;
+        this.delay = delay;
+        this.karma = karma;
+        this.cretaed = cretaed;
+        this.submitted = submitted;
+    }
+    public UsersDTO(){}
+
 }
